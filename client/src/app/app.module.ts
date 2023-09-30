@@ -23,6 +23,8 @@ import { RouterModule } from '@angular/router';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     ServerErrorComponent,
     MemberCardComponent,
     MemberDetailComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     FormsModule,
     SharedModule,
     RouterModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FileUploadModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -54,6 +58,9 @@ import { LoadingInterceptor } from './_interceptors/loading.interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
+  exports: [
+    FileUploadModule
+  ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
