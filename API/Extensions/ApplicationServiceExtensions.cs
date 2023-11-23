@@ -14,6 +14,7 @@ public static class ApplicationServiceExtensions
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IPhotoService, PhotoService>();
+        services.AddScoped<LogUserActivity>();
         services.AddDbContext<DataContext>(options =>
         {
             options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
